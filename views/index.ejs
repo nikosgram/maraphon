@@ -8,17 +8,27 @@
     <title>Maraphon Optimizer</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <script src="/javascripts/preload.min.js" defer></script>
+    <style>
+        form {
+            display: flex !important;
+            flex-flow: row !important;
+            justify-content: space-between !important;
+        }
+    </style>
 </head>
 <body>
-<section>
+<section class="panel">
     <h3 class="header">Maraphon Optimizer</h3>
 
-    <form action="/maraphon" method="post" enctype="multipart/form-data">
-        <input type="file" accept="image/x-png,image/jpeg" name="image"/>
-        <button class="small primary" type="submit">Convert</button>
+    <div class="preview"></div>
+
+    <form>
+        <label class="small secondary" for="image_uploads">
+            Upload images
+            <input type="file" id="image_uploads" accept="image/x-png,image/jpeg" name="image" multiple/>
+        </label>
+        <button class="small primary" type="submit" onclick="event.preventDefault();">Optimize</button>
     </form>
 </section>
-
-<a href="/working/" target="_blank">Working Folder</a>
 </body>
 </html>
