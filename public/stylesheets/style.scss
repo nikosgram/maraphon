@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --color: #7d7d7d;
+  --section-color: #fff;
+  --section-shadow-color: rgba(175, 175, 175, .25);
+}
+
+@import "title";
+@import "button";
+
+////noinspection CssInvalidMediaFeature
+//@media (prefers-color-scheme: dark) {
+//  :root {
+//    --background-color: #000;
+//    --color: #ececec;
+//    --section-color: #000;
+//    --section-shadow-color: unset;
+//  }
+//}
+
+html,
+body {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+
+  section {
+    padding: 20px;
+    background-color: var(--section-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px var(--section-shadow-color);
+    width: 300px;
+    margin: 60px 0;
+
+    .header {
+      text-align: center;
+      margin-block-end: 20px;
+      margin-block-start: unset;
+    }
+
+    .preview {
+      ol {
+        list-style-type: none;
+        padding-inline-start: 0;
+        padding: 0;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-flow: column;
+      margin: 0;
+      padding: 0;
+
+      label {
+        display: block;
+        margin: 20px 0 0;
+        align-self: flex-start;
+
+        input {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        display: block;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+.hide-dark {
+  display: unset;
+
+  //noinspection CssInvalidMediaFeature
+  @media (prefers-color-scheme: dark) {
+    display: none;
+  }
+}
+
+.show-dark {
+  display: none;
+
+  //noinspection CssInvalidMediaFeature
+  @media (prefers-color-scheme: dark) {
+    display: unset;
+  }
+}

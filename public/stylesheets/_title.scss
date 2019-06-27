@@ -1,0 +1,21 @@
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: var(--color);
+}
+
+h1, .h1 {
+  font-size: 36px;
+}
+
+h2, .h2 {
+  font-size: 32px;
+}
+
+h3, .h3 {
+  font-size: 28px;
+}
+
+h4, .h4 {
+  font-size: 24px;
+}
