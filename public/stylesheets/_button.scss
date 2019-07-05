@@ -1,18 +1,21 @@
 :root {
+  //--btn-disabled-opacity: .85;
+  --btn-disabled-opacity: .5;
+
   --btn-shadow-x: 0;
   --btn-shadow-y: 10px;
   --btn-shadow-b: 20px;
-  --btn-shadow-color-opacity: 75;
+  --btn-shadow-color-opacity: .75;
 
   --btn-shadow-pressed-x: 0;
   --btn-shadow-pressed-y: 2px;
   --btn-shadow-pressed-b: 5px;
-  --btn-shadow-pressed-color-opacity: 50;
+  --btn-shadow-pressed-color-opacity: .50;
 
   --btn-shadow-hover-x: 0;
   --btn-shadow-hover-y: 12.5px;
   --btn-shadow-hover-b: 30px;
-  --btn-shadow-hover-color-opacity: 85;
+  --btn-shadow-hover-color-opacity: .85;
 
   --btn-default-color: #7d7d7d;
   --btn-default-background-color: #fff;
@@ -57,6 +60,15 @@
   --btn-secondary-shadow-hover: var(--btn-shadow-hover-x) var(--btn-shadow-hover-y) var(--btn-shadow-hover-b) var(--btn-secondary-shadow-color);
 }
 
+//noinspection CssInvalidMediaFeature
+@media (prefers-color-scheme: dark) {
+  :root {
+    --btn-shadow-color-opacity: .50;
+    --btn-shadow-pressed-color-opacity: .25;
+    --btn-shadow-hover-color-opacity: .60;
+  }
+}
+
 button,
 label {
   font-family: 'Roboto', sans-serif;
@@ -91,7 +103,7 @@ label {
 
   &:disabled,
   &.disabled {
-    opacity: .85;
+    opacity: var(--btn-disabled-opacity);
     box-shadow: var(--btn-default-shadow-pressed);
   }
 
@@ -121,7 +133,7 @@ label {
 
     &:disabled,
     &.disabled {
-      opacity: .85;
+      opacity: var(--btn-disabled-opacity);
       box-shadow: var(--btn-primary-shadow-pressed);
     }
   }
@@ -147,7 +159,7 @@ label {
 
     &:disabled,
     &.disabled {
-      opacity: .85;
+      opacity: var(--btn-disabled-opacity);
       box-shadow: var(--btn-secondary-shadow-pressed);
     }
   }
