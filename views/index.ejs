@@ -6,8 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Maraphon Optimizer</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <script src="/javascripts/preload.min.js" defer></script>
+    <!--    <link rel='stylesheet' href='/stylesheets/style.css'/>-->
+    <style><%- include('../public/stylesheets/style.css') %></style>
+    <!--    <script src="/javascripts/preload.min.js" defer></script>-->
+    <script defer><%- include('../public/javascripts/preload.min.js') %></script>
     <style>
         form {
             display: flex !important;
@@ -17,17 +19,22 @@
     </style>
 </head>
 <body>
+<div class="version-panel">
+    <p class="version">
+        v<%= version %>
+    </p>
+</div>
 <section class="panel">
-    <h3 class="header">Maraphon Optimizer</h3>
+    <h3 class="header">Maraphon Image Optimizer</h3>
 
     <div class="preview"></div>
 
     <form>
         <label class="small secondary" for="image_uploads">
             Upload images
-            <input type="file" id="image_uploads" accept="image/x-png,image/jpeg" name="image" multiple/>
+            <input type="file" id="image_uploads" accept="image/x-png,image/jpeg,image/png" name="images" multiple/>
         </label>
-        <button class="small primary" type="submit" onclick="event.preventDefault();">Optimize</button>
+        <button class="small primary" type="submit" onclick="event.preventDefault();" disabled>Optimize</button>
     </form>
 </section>
 </body>

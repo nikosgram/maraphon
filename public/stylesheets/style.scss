@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
 
 :root {
+  //noinspection CssUnknownProperty
   color-scheme: light dark;
   --background-color: #fff;
   --color: #7d7d7d;
   --section-color: #fff;
-  --section-shadow-color: rgba(175, 175, 175, .25);
+  //--section-shadow-color: rgba(175, 175, 175, .25);
+  --section-shadow-color: unset;
+}
+
+//noinspection CssInvalidMediaFeature
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #000;
+    --color: #fff;
+    --section-color: #000;
+    --section-shadow-color: unset;
+  }
 }
 
 @import "title";
 @import "button";
-
-////noinspection CssInvalidMediaFeature
-//@media (prefers-color-scheme: dark) {
-//  :root {
-//    --background-color: #000;
-//    --color: #ececec;
-//    --section-color: #000;
-//    --section-shadow-color: unset;
-//  }
-//}
 
 html,
 body {
@@ -40,6 +42,18 @@ body {
   align-items: center;
   flex-flow: column;
 
+  .version-panel {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    .version {
+      font-size: 10pt;
+    }
+  }
+
   section {
     padding: 20px;
     background-color: var(--section-color);
@@ -59,6 +73,29 @@ body {
         list-style-type: none;
         padding-inline-start: 0;
         padding: 0;
+        margin: 0;
+
+        li {
+          &:not(:first-child) {
+            margin-top: 16px;
+          }
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+
+          p {
+            padding: 0;
+            margin: 0;
+            overflow-wrap: break-word;
+          }
+        }
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
       }
     }
 
@@ -72,14 +109,17 @@ body {
         display: block;
         margin: 20px 0 0;
         align-self: flex-start;
+        position: relative;
 
         input {
-          width: 0.1px;
-          height: 0.1px;
+          width: 100%;
+          height: 100%;
           opacity: 0;
           overflow: hidden;
           position: absolute;
-          z-index: -1;
+          //z-index: -1;
+          top: 0;
+          left: 0;
         }
       }
 
