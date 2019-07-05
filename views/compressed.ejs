@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maraphon Optimizer</title>
+    <!--    <link rel='stylesheet' href='/stylesheets/style.css'/>-->
+    <style><%- include('../public/stylesheets/style.css') %></style>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css">
+</head>
+<body>
+<div class="version-panel">
+    <p class="version">
+        v<%= version %>
+    </p>
+</div>
+<section class="panel max-width">
+    <h3 class="header">Compressed <%= token %></h3>
+
+    <div class="grid">
+        <% files.forEach(function(file){ %>
+            <div class="image">
+                <picture>
+                    <source srcset="<%= '/' + file.folder + '/' + file.files[3] %>" media="(max-width: 768px)">
+                    <source srcset="<%= '/' + file.folder + '/' + file.files[5] %>" media="(max-width: 992px)">
+                    <img src="<%= '/' + file.folder + '/' + file.files[4] %>" alt="">
+                </picture>
+
+                <pre>
+                    <code class="html">&#x3C;picture&#x3E;
+    &#x3C;source srcset=&#x22;<%= '/path_to/' + file.files[3] %>&#x22; media=&#x22;(max-width: 768px)&#x22;&#x3E;
+    &#x3C;source srcset=&#x22;<%= '/path_to/' + file.files[5] %>&#x22; media=&#x22;(max-width: 992px)&#x22;&#x3E;
+    &#x3C;img src=&#x22;<%= '/path_to/' + file.files[4] %>&#x22; alt=&#x22;&#x22;&#x3E;
+&#x3C;/picture&#x3E;</code>
+                </pre>
+            </div>
+        <% }); %>
+    </div>
+
+    <a href="/working/output/<%= token + '/' + token + '.zip' %>"
+       class="button small primary"
+       type="submit"
+       target="_blank">
+        Download Zip
+    </a>
+
+    <pre><%= JSON.stringify(files, null, 2) %></pre>
+    <pre><%= folders %></pre>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+<script defer><%- include('../public/javascripts/compressed.min.js') %></script>
+</body>
+</html>

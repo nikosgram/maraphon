@@ -133,7 +133,7 @@ router.post('/check/:token', (req, res) => {
     exists(outputPath, 500, 100).then(() => {
         res.json({
             status: 'successful',
-            message: '/working/output/' + token + '/',
+            message: '/compressed/' + token + '/',
             code: 'redirect'
         });
     }).catch(() => {
@@ -142,6 +142,36 @@ router.post('/check/:token', (req, res) => {
             message: 'Something got wrong.',
             code: 'something_got_wrong'
         });
+    });
+});
+
+router.get('/compressed/:token', (req, res, next) => {
+    const token = req.params.token;
+    const outputFolder = path.join('./working/output/' + token);
+
+    if (!fs.existsSync(outputFolder)) {
+        next();
+
+        return;
+    }
+
+    const folders = fs.readdirSync(outputFolder)
+        .map(fileName => path.join(outputFolder, fileName))
+        .filter(fileName => fs.statSync(fileName).isDirectory());
+    const files = folders.map(folder => {
+        const files = fs.readdirSync(folder);
+
+        return {
+            files: files,
+            folder: folder,
+        }
+    });
+
+    res.render('compressed.ejs', {
+        version: package.version,
+        token: token,
+        folders: JSON.stringify(folders, null, 2),
+        files: files,
     });
 });
 

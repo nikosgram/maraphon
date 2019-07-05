@@ -70,7 +70,8 @@
 }
 
 button,
-label {
+label,
+a.button {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 
@@ -86,6 +87,9 @@ label {
   color: var(--btn-default-color);
   background-color: var(--btn-default-background-color);
   box-shadow: var(--btn-default-shadow);
+
+  cursor: pointer;
+  text-decoration: none;
 
   &:hover {
     &:not(:disabled):not(.disabled) {
